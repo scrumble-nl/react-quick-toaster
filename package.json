@@ -1,0 +1,37 @@
+{
+  "name": "quick-toaster",
+  "version": "0.1.0",
+  "description": "A wrapper for react-bootstrap toaster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Luukdewaaier/quick-toaster.git"
+  },
+  "author": "Luuk de Weijer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Luukdewaaier/quick-toaster/issues"
+  },
+  "homepage": "https://github.com/Luukdewaaier/quick-toaster#readme",
+  "files": ["lib/**/*"],
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-fade-in": "^0.1.6"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "react": "^16.9.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-fade-in": "^0.1.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.2",
+    "typescript": "^3.6.2"
+  }
+}

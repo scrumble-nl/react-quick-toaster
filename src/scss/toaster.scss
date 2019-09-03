@@ -1,0 +1,41 @@
+body {
+  z-index: 0;
+}
+
+.toaster {
+  position: absolute;
+  width: 400px;
+  z-index: 999;
+  padding: 0.3rem;
+
+  .alert {
+    margin-bottom: 0.3rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .toaster {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+.toaster-top-right {
+  top: 0;
+  right: 0;
+}
+
+.toaster-top-left {
+  top: 0;
+  left: 0;
+}
+
+.toaster-bottom-right {
+  bottom: 0;
+  right: 0;
+}
+
+.toaster-bottom-left {
+  bottom: 0;
+  left: 0;
+}
