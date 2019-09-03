@@ -2,11 +2,16 @@
   "name": "quick-toaster",
   "version": "0.1.0",
   "description": "A wrapper for react-bootstrap toaster",
-  "main": "index.js",
+  "main": "lib/toaster.js",
+  "types": "lib/toaster.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare" : "npm run build",
+    "version" : "npm run format && git add -A src",
+    "postversion" : "git push && git push --tags"
   },
+  "keywords": ["React", "Bootstrap", "Toaster"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Luukdewaaier/quick-toaster.git"
