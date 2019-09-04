@@ -1,5 +1,5 @@
 {
-  "name": "quick-toaster",
+  "name": "@2fast/quick-toaster",
   "version": "0.1.0",
   "description": "A wrapper for react-bootstrap toaster",
   "main": "lib/toaster.js",
@@ -7,11 +7,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "prepare" : "npm run build",
-    "version" : "npm run format && git add -A src",
-    "postversion" : "git push && git push --tags"
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
-  "keywords": ["React", "Bootstrap", "Toaster"],
+  "keywords": [
+    "React",
+    "Bootstrap",
+    "Toaster"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Luukdewaaier/quick-toaster.git"
@@ -22,7 +28,9 @@
     "url": "https://github.com/Luukdewaaier/quick-toaster/issues"
   },
   "homepage": "https://github.com/Luukdewaaier/quick-toaster#readme",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "peerDependencies": {
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
@@ -37,6 +45,12 @@
   },
   "devDependencies": {
     "@types/react": "^16.9.2",
+    "prettier": "^1.18.2",
+    "tslint": "^5.19.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.6.2"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
