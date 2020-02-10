@@ -1,6 +1,6 @@
 {
   "name": "quick-toaster",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A wrapper for react-bootstrap toaster",
   "main": "lib/toaster.js",
   "types": "lib/toaster.d.ts",
@@ -24,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/Luukdewaaier/quick-toaster.git"
   },
-  "author": "ricoclark & luukdewaaier",
+  "author": "Scrumble",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Luukdewaaier/quick-toaster/issues"
