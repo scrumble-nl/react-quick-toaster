@@ -7,9 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
@@ -22,7 +24,7 @@
     "type": "git",
     "url": "git+https://github.com/Luukdewaaier/quick-toaster.git"
   },
-  "author": "Luuk de Weijer",
+  "author": "ricoclark & luukdewaaier",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Luukdewaaier/quick-toaster/issues"
@@ -40,6 +42,7 @@
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-fade-in": "^0.1.6"
   },
@@ -48,6 +51,8 @@
     "prettier": "^1.18.2",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.6.2"
   },
   "directories": {

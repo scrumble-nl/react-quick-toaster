@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
+    "module": "esnext",
     "declaration": true,
-    "strict": true,
+    "strict": false,
     "outDir": "./lib",
     "noImplicitAny": false,
     "esModuleInterop": true,
     "jsx": "react",
-    "strictNullChecks": false,
+    "strictNullChecks": true,
     "lib": ["es5", "es2015", "es2016", "dom"],
     "moduleResolution": "node"
   },

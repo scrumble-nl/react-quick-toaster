@@ -6,9 +6,9 @@ import {Alert} from 'react-bootstrap';
 import {IToast} from './toast-provider';
 
 interface props {
-    toast: IToast,
-    defaultTimer: number
-    removeToast(id: number): void,
+    toast: IToast;
+    defaultTimer: number;
+    removeToast(id: number): void;
 }
 
 export default class Toast extends React.Component<props, {}> {
@@ -27,10 +27,10 @@ export default class Toast extends React.Component<props, {}> {
                     dismissible={this.props.toast.dismissible !== false}
                     onClose={() => this.props.removeToast(this.props.toast.id || 0)}
                 >
-                    {!this.props.toast.header || <Alert.Heading>{this.props.toast.header}</Alert.Heading>}
+                    {this.props.toast.header && <Alert.Heading>{this.props.toast.header}</Alert.Heading>}
                     {this.props.toast.content}
                 </Alert>
             </FadeIn>
-        )
-    }
+        );
+    };
 }
