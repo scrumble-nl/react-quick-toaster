@@ -5,33 +5,32 @@ import {ToastRenderer} from './toast-renderer';
 import './scss/toaster.scss';
 
 export interface IToast {
-    content: string,
-    id?: number,
-    header?: string,
-    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined,
-    dismissTimer?: number,
-    dismissible?: boolean,
+    content: string;
+    id?: number;
+    header?: string;
+    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined;
+    dismissTimer?: number;
+    dismissible?: boolean;
 }
 
 interface IToastContext {
-    add(toast: IToast): void,
+    add(toast: IToast): void;
 }
 
 interface props {
-    position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right',
-    maxItems: number,
-    defaultTimer: number,
+    position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+    maxItems: number;
+    defaultTimer: number;
 }
 
 interface state {
-    toasts: IToast[],
+    toasts: IToast[];
 }
 
 // @ts-ignore
 export const ToastContext = React.createContext<IToastContext>();
 
 export class ToastProvider extends React.Component<props, state> {
-
     state = {toasts: []};
 
     public static defaultProps = {
@@ -46,10 +45,7 @@ export class ToastProvider extends React.Component<props, state> {
         }
 
         this.setState({
-            toasts: [
-                ...this.state.toasts,
-                {...toast, id: new Date().getTime()}
-            ]
+            toasts: [...this.state.toasts, {...toast, id: new Date().getTime()}],
         });
     };
 
@@ -83,5 +79,5 @@ export class ToastProvider extends React.Component<props, state> {
                 />
             </ToastContext.Provider>
         );
-    }
+    };
 }
