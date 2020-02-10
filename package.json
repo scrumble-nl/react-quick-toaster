@@ -1,11 +1,11 @@
 {
-  "name": "@2fast/quick-toaster",
+  "name": "quick-toaster",
   "version": "0.1.0",
   "description": "A wrapper for react-bootstrap toaster",
   "main": "lib/toaster.js",
   "types": "lib/toaster.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
@@ -47,8 +47,11 @@
     "react-fade-in": "^0.1.6"
   },
   "devDependencies": {
+    "@types/jest": "^25.1.2",
     "@types/react": "^16.9.2",
+    "jest": "^25.1.0",
     "prettier": "^1.18.2",
+    "ts-jest": "^25.2.0",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
