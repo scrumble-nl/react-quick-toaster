@@ -2,7 +2,7 @@ import React from 'react';
 
 import {ToastRenderer} from './toast-renderer';
 
-import './scss/toaster.scss';
+import './scss/toaster.css';
 
 export interface IToast {
     content: string;
