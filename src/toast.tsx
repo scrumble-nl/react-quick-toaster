@@ -12,7 +12,6 @@ interface props {
 }
 
 export default class Toast extends React.Component<props, {}> {
-    
     componentDidMount = (): void => {
         let {dismissTimer, id} = this.props.toast;
 
