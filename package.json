@@ -1,5 +1,5 @@
 {
-  "name": "quick-toaster",
+  "name": "scrumble-nl/quick-toaster",
   "version": "0.1.4",
   "description": "A wrapper for react-bootstrap toaster",
   "main": "lib/toaster.js",
