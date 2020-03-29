@@ -138,9 +138,14 @@ The following options can be used for customization:
 | `dismissTimer` | number                                                                                 | *false*    | Auto dismiss amount in milliseconds | `dismissTimer` of `ToastProvider`
 | `dismissible`  | boolean                                                                                | *false*    | If you can dismiss the toast        | `true`
 
+## Roadmap
+- [x] Packagize component
+- [ ] Actual test implementation
+- [ ] Switch from interfaces to types
+- [ ] Improve scss usage
+
 ## Contributing
 If you would like to see additions/changes to this package you are always welcome to add some code or improve it.
 
 ## Scrumble
-
 This product has been originally developed by [Scrumble](https://www.scrumble.nl) for internal use. As we have been using lots of open source packages we wanted to give back to the community. We hope this helps you getting forward as much as other people helped us!
