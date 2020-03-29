@@ -36,59 +36,24 @@ The `ToastProvider` has multiple optional props so you can customize it to your 
 
 ### Adding toasts
 
-1\. Import `withToaster` and `IToast` in the component where you want to create a toast.
+1. Import `withToaster` and `IToast` in the component where you want to create a toast.
+2. add `export default withToaster(MyComponent)` to the file
+3. If you are using typescript, add toaster to your interface
+4. Finally, you can create a toast with the desired configuration from your component:
 ```typescript
 import React from 'react';
-import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
-
-class MyComponent extends React.Component<{}, {}> {
-
-    showToast = (): void => {
-        // show toast
-    }
-
-    render = (): JSX.Element => {
-        return (
-            <button onclick={this.showToast}>Show my awesome toast</button>            
-        )
-    }
-}
-```
-2\. add `export default withToaster(MyComponent)` to the file
-```typescript
-import React from 'react';
-import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
-
-class MyComponent extends React.Component<{}, {}> {
-
-    showToast = (): void => {
-        // show toast
-    }
-
-    render = (): JSX.Element => {
-        return (
-            <button onclick={this.showToast}>Show my awesome toast</button>            
-        )
-    }
-}
-
-export default withToaster(MyComponent);
-```
-3\. if you are using typescript, add toaster to your interface:
-```typescript
-import React from 'react';
-import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
+import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // Step 1
 
 interface props {
     toaster: {
-        add(toast: IToast): void,
+        add(toast: IToast): void, // Step 3
     },
 }
 
 class MyComponent extends React.Component<props, {}> {
 
     showToast = (): void => {
-        // show toast
+        this.props.toaster.add({content: 'Damn, this is an easy package!'}); // Step 4
     }
 
     render = (): JSX.Element => {
@@ -98,34 +63,7 @@ class MyComponent extends React.Component<props, {}> {
     }
 }
 
-export default withToaster(MyComponent);
-```
-
-4\. Finally, you can create a toast with the desired configuration from your component:
-```typescript
-import React from 'react';
-import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
-
-interface props {
-    toaster: {
-        add(toast: IToast): void,
-    },
-}
-
-class MyComponent extends React.Component<props, {}> {
-
-    showToast = (): void => {
-        this.props.toaster.add({content: 'Damn, this is an easy package!'});
-    }
-
-    render = (): JSX.Element => {
-        return (
-            <button onclick={this.showToast}>Show my awesome toast</button>            
-        )
-    }
-}
-
-export default withToaster(MyComponent);
+export default withToaster(MyComponent); // Step 2
 ```
 
 The following options can be used for customization:
