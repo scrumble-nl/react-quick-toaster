@@ -26,7 +26,7 @@ export default class ToastApp extends React.Component<{}, {}> {
     }       
 }
 ```
-The `ToastProvider` has multiple optional props so you can customize to your needs:
+The `ToastProvider` has multiple optional props so you can customize it to your needs:
 
 | Name         | Type                                                                                   | Required | Description                         | Default|
 |--------------|:----------------------------------------------------------------------------------------:|:----------:|:-------------------------------------|------|
@@ -37,7 +37,7 @@ The `ToastProvider` has multiple optional props so you can customize to your nee
 ### Adding toasts
 
 1\. Import `withToaster` and `IToast` in the component where you want to create a toast.
-```typescript jsx
+```typescript
 import React from 'react';
 import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
 
@@ -55,7 +55,7 @@ class MyComponent extends React.Component<{}, {}> {
 }
 ```
 2\. add `export default withToaster(MyComponent)` to the file
-```typescript jsx
+```typescript
 import React from 'react';
 import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
 
@@ -75,7 +75,7 @@ class MyComponent extends React.Component<{}, {}> {
 export default withToaster(MyComponent);
 ```
 3\. if you are using typescript, add toaster to your interface:
-```typescript jsx
+```typescript
 import React from 'react';
 import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
 
@@ -102,7 +102,7 @@ export default withToaster(MyComponent);
 ```
 
 4\. Finally, you can create a toast with the desired configuration from your component:
-```typescript jsx
+```typescript
 import React from 'react';
 import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // here
 
