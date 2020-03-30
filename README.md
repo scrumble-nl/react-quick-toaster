@@ -2,11 +2,7 @@
 A quick and easy wrapper around react-bootstrap toasters, you can simply add the provider and use toasts throughout your application. 
 
 ## Quick
-![alt text](https://scrumble.nl/wp-content/uploads/2020/03/quick-logo-zonder-alle-tekst.png "Quick image")
-
-todo: 
-- correcte image toevoegen
-- quick tekst
+![alt text](https://scrumble.nl/wp-content/uploads/2020/03/quick.png "Quick image")
 
 ## Usage
 ### Provider
