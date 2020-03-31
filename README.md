@@ -54,7 +54,7 @@ class MyComponent extends React.Component<props, {}> {
 
     render = (): JSX.Element => {
         return (
-            <button onclick={this.showToast}>Show my awesome toast</button>            
+            <button onClick={this.showToast}>Show my awesome toast</button>            
         )
     }
 }
