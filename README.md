@@ -72,8 +72,11 @@ The following options can be used for customization:
 | `dismissTimer` | number                                                                                 | *false*    | Auto dismiss amount in milliseconds | `dismissTimer` of `ToastProvider`
 | `dismissible`  | boolean                                                                                | *false*    | If you can dismiss the toast        | `true`
 
+Next to that you can override the bootstrap class `.alert` to change the look of the toasts.
+
 ## Roadmap
 - [x] Packagize component
+- [ ] Improve styling customizability
 - [ ] Actual test implementation
 - [ ] Switch from interfaces to types
 - [ ] Improve scss usage
