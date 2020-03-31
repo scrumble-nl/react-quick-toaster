@@ -1,7 +1,7 @@
 {
-  "name": "scrumble-nl/quick-toaster",
+  "name": "@scrumble-nl/quick-toaster",
   "version": "0.1.4",
-  "description": "A wrapper for react-bootstrap toaster",
+  "description": "A quick and easy wrapper around react-bootstrap toasters, you can toast from anywhere in your application with a few simple steps.\n\n",
   "main": "lib/toaster.js",
   "types": "lib/toaster.d.ts",
   "scripts": {
