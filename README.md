@@ -77,7 +77,7 @@ Next to that you can override the bootstrap class `.alert` to change the look of
 ## Roadmap
 - [x] Packagize component
 - [ ] Improve styling customizability
-- [ ] Actual test implementation
+- [ ] Automated testing implementation
 - [ ] Switch from interfaces to types
 - [ ] Improve scss usage
 
