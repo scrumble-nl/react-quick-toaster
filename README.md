@@ -3,14 +3,24 @@ A quick and easy wrapper around react-bootstrap toasters, you can toast from any
 
 ## Quick
 ![alt text](https://scrumble.nl/wp-content/uploads/2020/03/quick.png "Quick image")
+## Installation
 
+```sh
+npm install @scrumble-nl/quick-toaster
+```
+
+or
+
+```sh
+yarn add @scrumble-nl/quick-toaster
+```
 ## Usage
 ### Provider
 Add the provider as top level as possible:
 ```typescript
 import React from 'react';
 import App from './src/app';
-import {ToastProvider} from 'scrumble-nl/quick-toaster'; // Don't forget to import this
+import {ToastProvider} from '@scrumble-nl/quick-toaster'; // Don't forget to import this
 
 export default class ToastApp extends React.Component<{}, {}> {
     render = (): JSX.Element => {
@@ -38,7 +48,7 @@ The `ToastProvider` has multiple optional props so you can customize it to your 
 4. Finally, you can create a toast with the desired configuration from your component:
 ```typescript
 import React from 'react';
-import {withToaster, IToast} from 'scrumble-nl/quick-toaster'; // Step 1 (& 2)
+import {withToaster, IToast} from '@scrumble-nl/quick-toaster'; // Step 1 (& 2)
 
 interface props {
     toaster: {
