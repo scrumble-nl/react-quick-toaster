@@ -6,13 +6,13 @@ A quick and easy wrapper around react-bootstrap toasters, you can toast from any
 ## Installation
 
 ```sh
-npm install @scrumble-nl/quick-toaster
+npm install @scrumble-nl/react-quick-toaster
 ```
 
 or
 
 ```sh
-yarn add @scrumble-nl/quick-toaster
+yarn add @scrumble-nl/react-quick-toaster
 ```
 ## Usage
 ### Provider
