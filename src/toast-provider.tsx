@@ -4,13 +4,16 @@ import {ToastRenderer} from './toast-renderer';
 
 import './scss/toaster.css';
 
-export interface IToast {
+export type IdlessToast = {
     content: string;
-    id?: number;
     header?: string;
     variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined;
     dismissTimer?: number;
     dismissible?: boolean;
+}
+
+export type IToast = IdlessToast & {
+    id: number;
 }
 
 interface IToastContext {
@@ -21,6 +24,7 @@ interface props {
     position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
     maxItems: number;
     defaultTimer: number;
+    children: React.ReactNode;
 }
 
 interface state {
@@ -39,13 +43,13 @@ export class ToastProvider extends React.Component<props, state> {
         defaultTimer: 4000,
     };
 
-    addToast = (toast: IToast): void => {
+    addToast = (toast: IdlessToast): void => {
         if (this.state.toasts.length >= this.props.maxItems) {
             this.removeToastByIndex(0, this.state.toasts.length - this.props.maxItems + 1);
         }
 
         this.setState({
-            toasts: [...this.state.toasts, {...toast, id: new Date().getTime()}],
+            toasts: [{...toast, id: new Date().getTime()}, ...this.state.toasts],
         });
     };
 
