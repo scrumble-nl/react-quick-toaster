@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 
+import {motion} from 'framer-motion';
 import {Alert} from 'react-bootstrap';
-import { motion } from "framer-motion";
 import {IToast} from './toast-provider';
 
 interface props {
@@ -20,9 +20,9 @@ const Toast = (props: props) => {
     return (
         <motion.div
             layout="position"
-            initial={{ opacity: 0, y: -30, scale: 0.7 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.7, transition: { type: 'tween', duration: 0.2 } }}
+            initial={{opacity: 0, y: -30, scale: 0.7}}
+            animate={{opacity: 1, y: 0, scale: 1}}
+            exit={{opacity: 0, scale: 0.7, transition: {type: 'tween', duration: 0.2}}}
         >
             <Alert
                 variant={props.toast.variant || 'success'}
@@ -34,6 +34,6 @@ const Toast = (props: props) => {
             </Alert>
         </motion.div>
     );
-}
+};
 
 export default Toast;

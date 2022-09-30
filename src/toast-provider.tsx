@@ -10,11 +10,11 @@ export type IdlessToast = {
     variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined;
     dismissTimer?: number;
     dismissible?: boolean;
-}
+};
 
 export type IToast = IdlessToast & {
     id: number;
-}
+};
 
 interface IToastContext {
     add(toast: IToast): void;
