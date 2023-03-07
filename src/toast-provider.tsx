@@ -2,8 +2,6 @@ import React from 'react';
 
 import {ToastRenderer} from './toast-renderer';
 
-import './scss/toaster.css?inline';
-
 export type IdlessToast = {
     content: string;
     header?: string;

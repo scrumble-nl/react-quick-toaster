@@ -22,6 +22,8 @@ import React from 'react';
 import App from './src/app';
 import {ToastProvider} from '@scrumble-nl/quick-toaster'; // Don't forget to import this
 
+import '@scrumble-nl/quick-toaster/lib/scss/toaster.css';
+
 export default class ToastApp extends React.Component<{}, {}> {
     render = (): JSX.Element => {
         return (
