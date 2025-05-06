@@ -38,6 +38,12 @@ export const ToastContext = React.createContext<IToastContext>({
 });
 
 export class ToastProvider extends React.Component<props, state> {
+    // The 'refs' property is required to satisfy the React Component type definition
+    // starting from @types/react v18+. Although it's unused, omitting it causes a TypeScript
+    // error (TS2786) due to stricter class component constructor signatures.
+    // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/58632
+    refs: any;
+
     state: {toasts: IToast[]} = {toasts: []};
 
     public static defaultProps = {
