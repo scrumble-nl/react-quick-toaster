@@ -31,11 +31,14 @@ interface state {
     toasts: IToast[];
 }
 
-// @ts-ignore
-export const ToastContext = React.createContext<IToastContext>();
+export const ToastContext = React.createContext<IToastContext>({
+    add: () => {
+        // Default implementation does nothing
+    },
+});
 
 export class ToastProvider extends React.Component<props, state> {
-    state = {toasts: []};
+    state: {toasts: IToast[]} = {toasts: []};
 
     public static defaultProps = {
         position: 'top-right',
@@ -54,14 +57,13 @@ export class ToastProvider extends React.Component<props, state> {
     };
 
     removeToastByIndex = (index: number, deleteCount = 1): void => {
-        let toasts = this.state.toasts;
+        const toasts = this.state.toasts;
         toasts.splice(index, deleteCount);
         this.setState({toasts: toasts});
     };
 
     removeToastById = (id: number): void => {
         for (let i = 0, j = this.state.toasts.length; i < j; i++) {
-            // @ts-ignore
             if (this.state.toasts[i].id === id) {
                 this.removeToastByIndex(i);
                 return;
@@ -69,7 +71,7 @@ export class ToastProvider extends React.Component<props, state> {
         }
     };
 
-    render = (): JSX.Element => {
+    render = (): React.JSX.Element => {
         const context = {add: this.addToast};
 
         return (

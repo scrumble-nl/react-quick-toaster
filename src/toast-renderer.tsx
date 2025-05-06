@@ -12,7 +12,7 @@ interface IToastRenderer {
     defaultTimer: number;
 }
 
-export const ToastRenderer = (props: IToastRenderer): JSX.Element => {
+export const ToastRenderer = (props: IToastRenderer): React.JSX.Element => {
     return (
         <div className={'toaster toaster-' + props.position}>
             <AnimatePresence initial={false}>

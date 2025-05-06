@@ -1,6 +1,7 @@
-export {IToast} from './toast-provider';
 import {IdlessToast} from './toast-provider';
 export {ToastProvider} from './toast-provider';
+export {IToast} from './toast-provider';
+
 export {withToaster, useToaster} from './toast-consumer';
 
 export type ToasterProps = {

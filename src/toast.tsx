@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 
 import {motion} from 'framer-motion';
 import {Alert} from 'react-bootstrap';
+
 import {IToast} from './toast-provider';
 
 interface props {
@@ -12,10 +13,10 @@ interface props {
 
 const Toast = (props: props) => {
     useEffect(() => {
-        let {dismissTimer, id} = props.toast;
+        const {dismissTimer, id} = props.toast;
 
         setTimeout(() => props.removeToast(id || 0), dismissTimer || props.defaultTimer);
-    }, []);
+    }, [props]);
 
     return (
         <motion.div
