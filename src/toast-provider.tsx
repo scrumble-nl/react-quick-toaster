@@ -17,7 +17,7 @@ export type IToast = IdlessToast & {
 };
 
 interface IToastContext {
-    add(toast: IToast): void;
+    add(toast: IdlessToast | IToast): void;
 }
 
 interface props {
@@ -46,13 +46,14 @@ export class ToastProvider extends React.Component<props, state> {
         defaultTimer: 4000,
     };
 
-    addToast = (toast: IdlessToast): void => {
+    addToast = (toast: IdlessToast | IToast): void => {
         if (this.state.toasts.length >= this.props.maxItems) {
             this.removeToastByIndex(0, this.state.toasts.length - this.props.maxItems + 1);
         }
 
+        const hasId = 'id' in toast;
         this.setState({
-            toasts: [{...toast, id: new Date().getTime()}, ...this.state.toasts],
+            toasts: [{...toast, id: hasId ? (toast as IToast).id : new Date().getTime()}, ...this.state.toasts],
         });
     };
 
