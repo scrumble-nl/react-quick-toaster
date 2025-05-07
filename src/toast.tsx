@@ -16,7 +16,7 @@ const Toast = (props: props) => {
         const {dismissTimer, id} = props.toast;
 
         setTimeout(() => props.removeToast(id || 0), dismissTimer || props.defaultTimer);
-    }, [props]);
+    }, [props.toast, props.removeToast, props.defaultTimer]);
 
     return (
         <motion.div

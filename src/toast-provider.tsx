@@ -41,7 +41,6 @@ export class ToastProvider extends React.Component<props, state> {
     // The 'refs' property is required to satisfy the React Component type definition
     // starting from @types/react v18+. Although it's unused, omitting it causes a TypeScript
     // error (TS2786) due to stricter class component constructor signatures.
-    // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/58632
     refs: any;
 
     state: {toasts: IToast[]} = {toasts: []};
@@ -56,10 +55,12 @@ export class ToastProvider extends React.Component<props, state> {
         if (this.state.toasts.length >= this.props.maxItems) {
             this.removeToastByIndex(0, this.state.toasts.length - this.props.maxItems + 1);
         }
+        const isIToast = (toast: IToast | IdlessToast): toast is IToast => {
+            return 'id' in toast;
+        };
 
-        const hasId = 'id' in toast;
         this.setState({
-            toasts: [{...toast, id: hasId ? (toast as IToast).id : new Date().getTime()}, ...this.state.toasts],
+            toasts: [{...toast, id: isIToast(toast) ? (toast).id : new Date().getTime()}, ...this.state.toasts],
         });
     };
 
