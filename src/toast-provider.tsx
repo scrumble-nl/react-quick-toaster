@@ -37,6 +37,10 @@ export const ToastContext = React.createContext<IToastContext>({
     },
 });
 
+export const isIToast = (toast: IToast | IdlessToast): toast is IToast => {
+    return 'id' in toast;
+};
+
 export class ToastProvider extends React.Component<props, state> {
     // The 'refs' property is required to satisfy the React Component type definition
     // starting from @types/react v18+. Although it's unused, omitting it causes a TypeScript
@@ -55,9 +59,6 @@ export class ToastProvider extends React.Component<props, state> {
         if (this.state.toasts.length >= this.props.maxItems) {
             this.removeToastByIndex(0, this.state.toasts.length - this.props.maxItems + 1);
         }
-        const isIToast = (toast: IToast | IdlessToast): toast is IToast => {
-            return 'id' in toast;
-        };
 
         this.setState({
             toasts: [{...toast, id: isIToast(toast) ? (toast).id : new Date().getTime()}, ...this.state.toasts],
