@@ -11,12 +11,12 @@ interface props {
     removeToast(id: number): void;
 }
 
-const Toast = (props: props) => {
+const Toast = ({defaultTimer, removeToast, toast}: props) => {
     useEffect(() => {
-        const {dismissTimer, id} = props.toast;
+        const {dismissTimer, id} = toast;
 
-        setTimeout(() => props.removeToast(id || 0), dismissTimer || props.defaultTimer);
-    }, [props.toast, props.removeToast, props.defaultTimer]);
+        setTimeout(() => removeToast(id || 0), dismissTimer || defaultTimer);
+    }, [toast, removeToast, defaultTimer]);
 
     return (
         <motion.div
@@ -26,12 +26,12 @@ const Toast = (props: props) => {
             exit={{opacity: 0, scale: 0.7, transition: {type: 'tween', duration: 0.2}}}
         >
             <Alert
-                variant={props.toast.variant || 'success'}
-                dismissible={props.toast.dismissible !== false}
-                onClose={() => props.removeToast(props.toast.id || 0)}
+                variant={toast.variant || 'success'}
+                dismissible={toast.dismissible !== false}
+                onClose={() => removeToast(toast.id || 0)}
             >
-                {props.toast.header && <Alert.Heading>{props.toast.header}</Alert.Heading>}
-                {props.toast.content}
+                {toast.header && <Alert.Heading>{toast.header}</Alert.Heading>}
+                {toast.content}
             </Alert>
         </motion.div>
     );

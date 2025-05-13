@@ -61,7 +61,7 @@ export class ToastProvider extends React.Component<props, state> {
         }
 
         this.setState({
-            toasts: [{...toast, id: isIToast(toast) ? (toast).id : new Date().getTime()}, ...this.state.toasts],
+            toasts: [{...toast, id: isIToast(toast) ? toast.id : new Date().getTime()}, ...this.state.toasts],
         });
     };
 
