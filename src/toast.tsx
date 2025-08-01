@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import FadeIn from 'react-fade-in';
+import {motion} from 'framer-motion';
 import {Alert} from 'react-bootstrap';
 
 import {IToast} from './toast-provider';
@@ -11,25 +11,30 @@ interface props {
     removeToast(id: number): void;
 }
 
-export default class Toast extends React.Component<props, {}> {
-    componentDidMount = (): void => {
-        let {dismissTimer, id} = this.props.toast;
+const Toast = ({defaultTimer, removeToast, toast}: props) => {
+    useEffect(() => {
+        const {dismissTimer, id} = toast;
 
-        setTimeout(() => this.props.removeToast(id || 0), dismissTimer || this.props.defaultTimer);
-    };
+        setTimeout(() => removeToast(id || 0), dismissTimer || defaultTimer);
+    }, [toast, removeToast, defaultTimer]);
 
-    render = (): JSX.Element => {
-        return (
-            <FadeIn>
-                <Alert
-                    variant={this.props.toast.variant || 'success'}
-                    dismissible={this.props.toast.dismissible !== false}
-                    onClose={() => this.props.removeToast(this.props.toast.id || 0)}
-                >
-                    {this.props.toast.header && <Alert.Heading>{this.props.toast.header}</Alert.Heading>}
-                    {this.props.toast.content}
-                </Alert>
-            </FadeIn>
-        );
-    };
-}
+    return (
+        <motion.div
+            layout="position"
+            initial={{opacity: 0, y: -30, scale: 0.7}}
+            animate={{opacity: 1, y: 0, scale: 1}}
+            exit={{opacity: 0, scale: 0.7, transition: {type: 'tween', duration: 0.2}}}
+        >
+            <Alert
+                variant={toast.variant || 'success'}
+                dismissible={toast.dismissible !== false}
+                onClose={() => removeToast(toast.id || 0)}
+            >
+                {toast.header && <Alert.Heading>{toast.header}</Alert.Heading>}
+                {toast.content}
+            </Alert>
+        </motion.div>
+    );
+};
+
+export default Toast;

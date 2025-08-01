@@ -21,16 +21,14 @@ Add the provider as top level as possible:
 import React from 'react';
 import App from './src/app';
 import {ToastProvider} from '@scrumble-nl/quick-toaster'; // Don't forget to import this
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@scrumble-nl/react-quick-toaster/lib/scss/toaster.css'; // Don't forget to import this
 
-export default class ToastApp extends React.Component<{}, {}> {
-    render = (): JSX.Element => {
-        return (
-            <ToastProvider>
-                <App/>
-            </ToastProvider>
-        )       
-    }       
-}
+export const ToastApp = () => (
+    <ToastProvider>
+        <App />
+    </ToastProvider>
+);
 ```
 The `ToastProvider` has multiple optional props so you can customize it to your needs:
 
@@ -40,23 +38,41 @@ The `ToastProvider` has multiple optional props so you can customize it to your 
 | `maxItems`       | number                                                                                 | *false*    | The maximum amount of toasts rendered at a given time | `8`
 | `defaultTimer` | number | *false*    | The default amount of ms before the toast is removed  | `4000`
 
-### Adding toasts
+### Adding toasts hooks
+
+1. Import `useToaster` in the component where you want to create a toast
+2. Finally, you can create a toast with the desired configuration from your component:
+```typescript
+import React from 'react';
+import {useToaster} from '@scrumble-nl/quick-toaster'; // Step 1
+
+export const MyComponent = () => {
+    const toast = useToaster();
+
+    const handleClick = () => {
+        toast({
+            content: 'Damn, this is an easy package!',
+            variant: 'danger',
+        });
+    };
+
+    return (
+        <button onClick={handleClick}>Show my awesome toast</button>            
+    )
+}
+```
+
+### Adding toasts class components (Legacy)
 
 1. Import `withToaster` in the component where you want to create a toast
-2. If you are using TypeScript, import `IToast` and add toaster to your interface
+2. If you are using TypeScript, import `ToasterProps` and use for props typing
 3. Add `export default withToaster(MyComponent)` to the file
 4. Finally, you can create a toast with the desired configuration from your component:
 ```typescript
 import React from 'react';
-import {withToaster, IToast} from '@scrumble-nl/quick-toaster'; // Step 1 (& 2)
+import {withToaster, ToasterProps} from '@scrumble-nl/quick-toaster'; // Step 1 (& 2)
 
-interface props {
-    toaster: {
-        add(toast: IToast): void, // Step 2
-    },
-}
-
-class MyComponent extends React.Component<props, {}> {
+class MyComponent extends React.Component<ToasterProps, {}> {
 
     showToast = (): void => {
         this.props.toaster.add({content: 'Damn, this is an easy package!'}); // Step 4

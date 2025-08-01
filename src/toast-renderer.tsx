@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {AnimatePresence} from 'framer-motion';
+
 import Toast from './toast';
 import {IToast} from './toast-provider';
 
@@ -10,14 +12,21 @@ interface IToastRenderer {
     defaultTimer: number;
 }
 
-export const ToastRenderer = (props: IToastRenderer): JSX.Element => {
+export const ToastRenderer = (props: IToastRenderer): React.JSX.Element => {
     return (
         <div className={'toaster toaster-' + props.position}>
-            {props.toasts.map((item, key) => {
-                return (
-                    <Toast toast={item} key={key} removeToast={props.removeToast} defaultTimer={props.defaultTimer} />
-                );
-            })}
+            <AnimatePresence initial={false}>
+                {props.toasts.map(toast => {
+                    return (
+                        <Toast
+                            toast={toast}
+                            key={toast.id}
+                            removeToast={props.removeToast}
+                            defaultTimer={props.defaultTimer}
+                        />
+                    );
+                })}
+            </AnimatePresence>
         </div>
     );
 };

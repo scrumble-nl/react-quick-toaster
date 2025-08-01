@@ -4,34 +4,50 @@ import {ToastRenderer} from './toast-renderer';
 
 import './scss/toaster.css';
 
-export interface IToast {
+export type IdlessToast = {
     content: string;
-    id?: number;
     header?: string;
     variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light' | undefined;
     dismissTimer?: number;
     dismissible?: boolean;
-}
+};
+
+export type IToast = IdlessToast & {
+    id: number;
+};
 
 interface IToastContext {
-    add(toast: IToast): void;
+    add(toast: IdlessToast | IToast): void;
 }
 
 interface props {
     position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
     maxItems: number;
     defaultTimer: number;
+    children: React.ReactNode;
 }
 
 interface state {
     toasts: IToast[];
 }
 
-// @ts-ignore
-export const ToastContext = React.createContext<IToastContext>();
+export const ToastContext = React.createContext<IToastContext>({
+    add: () => {
+        // Default implementation does nothing
+    },
+});
+
+export const isIToast = (toast: IToast | IdlessToast): toast is IToast => {
+    return 'id' in toast;
+};
 
 export class ToastProvider extends React.Component<props, state> {
-    state = {toasts: []};
+    // The 'refs' property is required to satisfy the React Component type definition
+    // starting from @types/react v18+. Although it's unused, omitting it causes a TypeScript
+    // error (TS2786) due to stricter class component constructor signatures.
+    refs: any;
+
+    state: {toasts: IToast[]} = {toasts: []};
 
     public static defaultProps = {
         position: 'top-right',
@@ -39,25 +55,24 @@ export class ToastProvider extends React.Component<props, state> {
         defaultTimer: 4000,
     };
 
-    addToast = (toast: IToast): void => {
+    addToast = (toast: IdlessToast | IToast): void => {
         if (this.state.toasts.length >= this.props.maxItems) {
             this.removeToastByIndex(0, this.state.toasts.length - this.props.maxItems + 1);
         }
 
         this.setState({
-            toasts: [...this.state.toasts, {...toast, id: new Date().getTime()}],
+            toasts: [{...toast, id: isIToast(toast) ? toast.id : new Date().getTime()}, ...this.state.toasts],
         });
     };
 
     removeToastByIndex = (index: number, deleteCount = 1): void => {
-        let toasts = this.state.toasts;
+        const toasts = this.state.toasts;
         toasts.splice(index, deleteCount);
         this.setState({toasts: toasts});
     };
 
     removeToastById = (id: number): void => {
         for (let i = 0, j = this.state.toasts.length; i < j; i++) {
-            // @ts-ignore
             if (this.state.toasts[i].id === id) {
                 this.removeToastByIndex(i);
                 return;
@@ -65,7 +80,7 @@ export class ToastProvider extends React.Component<props, state> {
         }
     };
 
-    render = (): JSX.Element => {
+    render = (): React.JSX.Element => {
         const context = {add: this.addToast};
 
         return (
